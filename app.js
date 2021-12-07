@@ -13,12 +13,14 @@
 //     e.preventDefault(); 
 
 
-async function getGiphy(){
-const response = await axios.get("http://https://api.giphy.com/v1/gifs/search", {
+async function getGiphy()  {
+  const response = await axios.get("http://https://api.giphy.com/v1/gifs/search", {
     params: { 
-        q: searchTerm,
-        api_key: 3eCGl81JpKBAiSF1mKwAcCDzKkZvLstt,
+        q: "searchTerm",
+        api_key: "3eCGl81JpKBAiSF1mKwAcCDzKkZvLstt",
     }
-},
-    console.log(results)
-)
+})
+    console.log(response)
+
+
+getGiphy()
