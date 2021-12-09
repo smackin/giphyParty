@@ -8,7 +8,6 @@ const token = "3eCGl81JpKBAiSF1mKwAcCDzKkZvLstt";
 
 // console.log(form);
 
-
 form.addEventListener('submit', async function(e){
     e.preventDefault(); 
      const response = await axios.get("https://api.giphy.com/v1/gifs/search", {
@@ -28,7 +27,11 @@ form.addEventListener('submit', async function(e){
         giphImg.src = response.data.data[`${random}`].images.original.url; 
         giphImg.classList.add('created');
         searchBar.value= '';
-        
-    })
+        newRow.append(giphImg);
+         })
 
-
+        deleteBtn.addEventListener('click', function(e){
+            //let remove = document.getElementsByClassName('#created')
+            canvas.innerHTML = ''; 
+            
+        })
