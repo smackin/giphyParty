@@ -1,26 +1,34 @@
-// console.log("here we go");
 
-// const form = document.querySelector("#giphyForm"); 
-// const inputData = document.querySelector("#inputText"); 
-// const searchBtn = document.querySelector("#searchButton"); 
-// const deleteBtn = document.querySelector("#deleteButton"); 
-// const canvas = document.querySelector("#giphyCanvas");
+const form = document.querySelector("#giphyForm"); 
+const searchBar = document.querySelector("#searchBar"); 
+const searchBtn = document.querySelector("#searchButton"); 
+const deleteBtn = document.querySelector("#deleteButton"); 
+const canvas = document.querySelector("#giphyCanvas");
+const token = "3eCGl81JpKBAiSF1mKwAcCDzKkZvLstt"; 
 
 // console.log(form);
 
 
-// form.addEventListener('submit', function(e){
-//     e.preventDefault(); 
+form.addEventListener('submit', async function(e){
+    e.preventDefault(); 
+     const response = await axios.get("https://api.giphy.com/v1/gifs/search", {
+        params: { 
+            q: searchBar.value, 
+            api_key: token,
+            }
+        });
+
+        let giphyArr = response.data.data.length; 
+        let random = Math.floor(Math.random() * giphyArr)
+        let newRow = document.createElement("DIV");
+            newRow.classList.add('col-6'); 
+            canvas.append(newRow); 
+
+        let giphImg = document.createElement('img'); 
+        giphImg.src = response.data.data[`${random}`].images.original.url; 
+        giphImg.classList.add('created');
+        searchBar.value= '';
+        
+    })
 
 
-async function getGiphy()  {
-  const response = await axios.get("http://https://api.giphy.com/v1/gifs/search", {
-    params: { 
-        q: "searchTerm",
-        api_key: "3eCGl81JpKBAiSF1mKwAcCDzKkZvLstt",
-    }
-})
-    console.log(response)
-
-
-getGiphy()

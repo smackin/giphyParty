@@ -26,8 +26,8 @@ h2{
 }
 
 input {
-    
     color: white; 
+    background-color: darkgrey;
     padding: 1px 1px 1px 1px;
     text-align: center;
     font-family: fantasy;
